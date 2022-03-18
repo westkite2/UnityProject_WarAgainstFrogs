@@ -3535,7 +3535,7 @@ GameObject:
   - component: {fileID: 4691832418928178}
   - component: {fileID: 95172607052263456}
   - component: {fileID: 136685980256629510}
-  - component: {fileID: -2806232432632225568}
+  - component: {fileID: 8302542646055686726}
   m_Layer: 0
   m_Name: Frog
   m_TagString: Untagged
@@ -3595,7 +3595,7 @@ CapsuleCollider:
   m_Height: 0.28
   m_Direction: 2
   m_Center: {x: 0, y: 0.07, z: 0}
---- !u!114 &-2806232432632225568
+--- !u!114 &8302542646055686726
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3608,14 +3608,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   frog: {fileID: 1644373995442134}
-  frogsBody: {fileID: 100004, guid: 75116d3ad847f4b308aea41d92d1efb8, type: 3}
-  blue: {fileID: 0}
-  balckOnRedSpot: {fileID: 0}
-  orangeBlackBlue: {fileID: 0}
-  redGreenBlack: {fileID: 0}
-  yellow: {fileID: 0}
-  yellowOnBlack: {fileID: 0}
   guts: {fileID: 0}
+  isSwimming: 1
+  isJumping: 0
+  jumpPos: {fileID: 0}
+  landPos: {fileID: 0}
+  reduceHeight: 1
+  journeyTime: 2
+  startTime: 0
 --- !u!1 &1651717217587476
 GameObject:
   m_ObjectHideFlags: 0
