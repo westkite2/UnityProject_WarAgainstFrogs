@@ -5,20 +5,14 @@ using UnityEngine;
 public class ShipScript : MonoBehaviour
 {
 
-    public GameObject frog;
+    public GameObject Frog;
     FrogController FrogControllerScript;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        FrogControllerScript = frog.GetComponent<FrogController>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        FrogControllerScript = Frog.GetComponent<FrogController>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -28,9 +22,6 @@ public class ShipScript : MonoBehaviour
         
         FrogControllerScript.isAttacking = true;
         FrogControllerScript.isJumping = false;
-        
-
-
     }
 
 }

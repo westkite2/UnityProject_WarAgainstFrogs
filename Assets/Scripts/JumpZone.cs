@@ -4,20 +4,14 @@ using UnityEngine;
 
 public class JumpZone : MonoBehaviour
 {
-    public GameObject frog;
-    public GameObject ship;
-    FrogController FrogControllerScript;
+    public GameObject Frog;
+    public GameObject Ship;
+    private FrogController FrogControllerScript;
 
     // Start is called before the first frame update
     void Start()
     {
-        FrogControllerScript = frog.GetComponent<FrogController>();        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        FrogControllerScript = Frog.GetComponent<FrogController>();        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -26,8 +20,8 @@ public class JumpZone : MonoBehaviour
         FrogControllerScript.isJumping = true;
 
         FrogControllerScript.startTime = Time.time;
-        FrogControllerScript.jumpPos = frog.transform.position;
-        FrogControllerScript.landPos = new Vector3(frog.transform.position.x, 0.3f, ship.transform.position.z);
+        FrogControllerScript.jumpPos = Frog.transform.position;
+        FrogControllerScript.landPos = new Vector3(Frog.transform.position.x, 0.3f, Ship.transform.position.z);
     }
 
 

@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class FrogController : MonoBehaviour
 {
-    public GameObject frog;
-    public GameObject guts;
-    public Animator animator;
-    private bool smashed = false;
+    private PlayerScript PlayerScript;
+    private Animator Anim;
+    //private bool smashed = false;
+   
 
     //Flags
     public bool isSwimming = true;
@@ -23,18 +23,21 @@ public class FrogController : MonoBehaviour
 
     //Tongue
     bool firstAttack = true;
-    float timer;
+    float tongueTimer;
     int waitingTime;
+    public GameObject Damage;
 
     private void Awake()
     {
-        animator = frog.GetComponent<Animator>();
+        PlayerScript = GameObject.Find("Player").GetComponent<PlayerScript>();
 
     }
 
     void Start()
     {
-        timer = 0.0f;
+        Anim = this.GetComponent<Animator>();
+
+        tongueTimer = 0.0f;
         waitingTime = 2;
     }
 
@@ -48,12 +51,12 @@ public class FrogController : MonoBehaviour
         {
             if (isJumping)
             {
-                Debug.Log("jump is called");
+                Debug.Log("jump");
                 Jump();
             }
             
             else{
-                Debug.Log("attack!");
+                Debug.Log("attack");
                 transform.position = landPos;
                 Tongue();
                 
@@ -65,7 +68,7 @@ public class FrogController : MonoBehaviour
     //Custom Functions
     public void Jump()
     {
-        animator.SetBool("Jump", true);
+        Anim.SetBool("Jump", true);
         Vector3 center = (jumpPos + landPos) * 0.5F; //gose up by center value
         center -= new Vector3(0, 1f * reduceHeight, 0); //higher y the lower
         Vector3 jumpCenter = jumpPos - center;
@@ -80,15 +83,28 @@ public class FrogController : MonoBehaviour
     {
         if (firstAttack)
         {
-            animator.SetBool("Idle", true);
+            Anim.SetBool("Idle", true);
             firstAttack = false;
         }
-        timer += Time.deltaTime;
-        if (timer > waitingTime)
+        tongueTimer += Time.deltaTime;
+
+        if (tongueTimer > waitingTime)
         {
-            animator.SetTrigger("Tongue");
-            timer = 0;
+            Anim.SetTrigger("Tongue");
+            StartCoroutine("RedFlick");
+            tongueTimer = 0;
         }
-        
     }
+
+    IEnumerator RedFlick()
+    {
+        yield return new WaitForSeconds(0.3f);
+        Damage.SetActive(true);
+        PlayerScript.hp -= 20;
+        
+        yield return new WaitForSeconds(0.1f);
+        Damage.SetActive(false);
+    }
+
+   
 }
