@@ -11,8 +11,7 @@ public class JumpZone : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        FrogControllerScript = frog.GetComponent<FrogController>();
-        
+        FrogControllerScript = frog.GetComponent<FrogController>();        
     }
 
     // Update is called once per frame
@@ -25,6 +24,7 @@ public class JumpZone : MonoBehaviour
     {
         FrogControllerScript.isSwimming = false; 
         FrogControllerScript.isJumping = true;
+
         FrogControllerScript.startTime = Time.time;
         FrogControllerScript.jumpPos = frog.transform.position;
         FrogControllerScript.landPos = new Vector3(frog.transform.position.x, 0.3f, ship.transform.position.z);

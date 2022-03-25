@@ -6,12 +6,13 @@ public class FrogController : MonoBehaviour
 {
     public GameObject frog;
     public GameObject guts;
-    private Animator animator;
+    public Animator animator;
     private bool smashed = false;
 
     //Flags
     public bool isSwimming = true;
     public bool isJumping = false;
+    public bool isAttacking = false;
 
     //Jump
     public Vector3 jumpPos; //Jump starting position
@@ -19,6 +20,11 @@ public class FrogController : MonoBehaviour
     public float reduceHeight = 1f; //center value of the jump parabola (higher the lower)
     public float journeyTime = 2f; //Duration from jumpPos to landPos (higher the slower)
     public float startTime;
+
+    //Tongue
+    bool firstAttack = true;
+    float timer;
+    int waitingTime;
 
     private void Awake()
     {
@@ -28,7 +34,8 @@ public class FrogController : MonoBehaviour
 
     void Start()
     {
-        
+        timer = 0.0f;
+        waitingTime = 2;
     }
 
     void Update()
@@ -37,9 +44,20 @@ public class FrogController : MonoBehaviour
         {
             transform.Translate(0, 0, 0.01f);
         }
-        if (isJumping)
+        else
         {
-            Jump();
+            if (isJumping)
+            {
+                Debug.Log("jump is called");
+                Jump();
+            }
+            
+            else{
+                Debug.Log("attack!");
+                transform.position = landPos;
+                Tongue();
+                
+            }
         }
 
     }
@@ -55,5 +73,22 @@ public class FrogController : MonoBehaviour
         float fracComplete = (Time.time - startTime) / journeyTime;
         transform.position = Vector3.Slerp(jumpCenter, landCenter, fracComplete);
         transform.position += center;
+
+    }
+
+    public void Tongue()
+    {
+        if (firstAttack)
+        {
+            animator.SetBool("Idle", true);
+            firstAttack = false;
+        }
+        timer += Time.deltaTime;
+        if (timer > waitingTime)
+        {
+            animator.SetTrigger("Tongue");
+            timer = 0;
+        }
+        
     }
 }

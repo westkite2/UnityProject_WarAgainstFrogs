@@ -3594,7 +3594,7 @@ CapsuleCollider:
   m_Radius: 0.09
   m_Height: 0.28
   m_Direction: 2
-  m_Center: {x: 0, y: 0.07, z: 0}
+  m_Center: {x: 0, y: 0.03, z: 0}
 --- !u!114 &8302542646055686726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3611,8 +3611,9 @@ MonoBehaviour:
   guts: {fileID: 0}
   isSwimming: 1
   isJumping: 0
-  jumpPos: {fileID: 0}
-  landPos: {fileID: 0}
+  isAttacking: 0
+  jumpPos: {x: 0, y: 0, z: 0}
+  landPos: {x: 0, y: 0, z: 0}
   reduceHeight: 1
   journeyTime: 2
   startTime: 0
