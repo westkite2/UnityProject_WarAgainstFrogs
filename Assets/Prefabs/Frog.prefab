@@ -3592,9 +3592,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.09
-  m_Height: 0.28
+  m_Height: 0.37
   m_Direction: 2
-  m_Center: {x: 0, y: 0.03, z: 0}
+  m_Center: {x: 0, y: 0.09, z: 0}
 --- !u!114 &8302542646055686726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3607,16 +3607,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5021ff5b67c0b841b432030cb3bfcf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frog: {fileID: 1644373995442134}
-  guts: {fileID: 0}
   isSwimming: 1
   isJumping: 0
   isAttacking: 0
+  isSmashed: 0
   jumpPos: {x: 0, y: 0, z: 0}
   landPos: {x: 0, y: 0, z: 0}
   reduceHeight: 1
   journeyTime: 2
   startTime: 0
+  Damage: {fileID: 0}
+  guts: {fileID: 0}
 --- !u!1 &1651717217587476
 GameObject:
   m_ObjectHideFlags: 0

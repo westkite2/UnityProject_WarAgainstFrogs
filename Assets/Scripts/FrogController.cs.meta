@@ -1,18 +1,9 @@
 fileFormatVersion: 2
-guid: a5021ff5b67c0b841b432030cb3bfcf3
+guid: c2887575f6e08ee419082e0efa9f27ba
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - frog: {fileID: 1644373995442134, guid: 0187bdd962557471faee34c9b592135c, type: 3}
-  - frogsBody: {instanceID: 0}
-  - blue: {instanceID: 0}
-  - balckOnRedSpot: {instanceID: 0}
-  - orangeBlackBlue: {instanceID: 0}
-  - redGreenBlack: {instanceID: 0}
-  - yellow: {instanceID: 0}
-  - yellowOnBlack: {instanceID: 0}
-  - guts: {instanceID: 0}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

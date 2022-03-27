@@ -28,7 +28,7 @@ public class FrogCont : MonoBehaviour
         skinnedMeshRenderer = frogsBody.GetComponent<SkinnedMeshRenderer>();
     }
 
-
+    /*
     public void Idle()
     {
         RootMotion();
@@ -41,15 +41,15 @@ public class FrogCont : MonoBehaviour
         RootMotion();
         DestroyGuts();
         anim.SetTrigger("Jump");
-    }
+    }*/
 
     public void Crawl()
     {
-        RootMotion();
+        //RootMotion();
         DestroyGuts();
         anim.SetTrigger("Crawl");
     }
-
+    /*
     public void Tongue()
     {
         RootMotion();
@@ -62,16 +62,16 @@ public class FrogCont : MonoBehaviour
         RootMotion();
         DestroyGuts();
         anim.SetTrigger("Swim");
-    }
+    }*/
 
     public void Smashed()
     {
-        RootMotion();
+        //RootMotion();
         DestroyGuts();
         anim.SetTrigger("Smashed");
         Guts();
     }
-
+    /*
     public void TurnLeft()
     {
         anim.applyRootMotion = true;
@@ -84,7 +84,7 @@ public class FrogCont : MonoBehaviour
         anim.applyRootMotion = true;
         DestroyGuts();
         anim.SetTrigger("TurnRight");
-    }
+    }*/
 
     public void Guts()
     {
@@ -100,14 +100,14 @@ public class FrogCont : MonoBehaviour
             smashed = true;
         }
     }
-
+    /*
     void RootMotion()
     {
         if (anim.applyRootMotion)
         {
             anim.applyRootMotion = false;
         }
-    }
+    }*/
 
 
     void DestroyGuts()

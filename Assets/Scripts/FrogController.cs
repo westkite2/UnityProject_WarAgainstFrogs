@@ -4,107 +4,84 @@ using UnityEngine;
 
 public class FrogController : MonoBehaviour
 {
-    private PlayerScript PlayerScript;
+    public GameObject Guts;
+
     private Animator Anim;
-    //private bool smashed = false;
-   
 
     //Flags
-    public bool isSwimming = true;
-    public bool isJumping = false;
-    public bool isAttacking = false;
+    public bool isCrawling = true;
+    public bool isFlying = false;
+    public bool isBoosting = false;
+    private bool isSmashed = false;
 
-    //Jump
-    public Vector3 jumpPos; //Jump starting position
-    public Vector3 landPos; //Jump landing position    
-    public float reduceHeight = 1f; //center value of the jump parabola (higher the lower)
-    public float journeyTime = 2f; //Duration from jumpPos to landPos (higher the slower)
-    public float startTime;
-
-    //Tongue
-    bool firstAttack = true;
-    float tongueTimer;
-    int waitingTime;
-    public GameObject Damage;
-
-    private void Awake()
-    {
-        PlayerScript = GameObject.Find("Player").GetComponent<PlayerScript>();
-
-    }
-
+    // Start is called before the first frame update
     void Start()
     {
         Anim = this.GetComponent<Animator>();
-
-        tongueTimer = 0.0f;
-        waitingTime = 2;
+        Guts = this.transform.GetChild(5).gameObject;
+        Guts.SetActive(false);
+        
     }
 
+    // Update is called once per frame
     void Update()
     {
-        if (isSwimming)
+        if (isSmashed)
         {
-            transform.Translate(0, 0, 0.01f);
-        }
-        else
-        {
-            if (isJumping)
-            {
-                Debug.Log("jump");
-                Jump();
-            }
-            
-            else{
-                Debug.Log("attack");
-                transform.position = landPos;
-                Tongue();
-                
-            }
+            Smashed();
         }
 
     }
 
-    //Custom Functions
-    public void Jump()
+    private void FixedUpdate()
     {
-        Anim.SetBool("Jump", true);
-        Vector3 center = (jumpPos + landPos) * 0.5F; //gose up by center value
-        center -= new Vector3(0, 1f * reduceHeight, 0); //higher y the lower
-        Vector3 jumpCenter = jumpPos - center;
-        Vector3 landCenter = landPos - center;
-        float fracComplete = (Time.time - startTime) / journeyTime;
-        transform.position = Vector3.Slerp(jumpCenter, landCenter, fracComplete);
-        transform.position += center;
+        if (isCrawling)
+        {
+            Crawl();
+        }
+        else if (isFlying)
+        {
+            Fly();
+        }
+        else if (isBoosting)
+        {
+            Boost();
+        }
+
 
     }
 
-    public void Tongue()
+    private void OnMouseDown()
     {
-        if (firstAttack)
-        {
-            Anim.SetBool("Idle", true);
-            firstAttack = false;
-        }
-        tongueTimer += Time.deltaTime;
-
-        if (tongueTimer > waitingTime)
-        {
-            Anim.SetTrigger("Tongue");
-            StartCoroutine("RedFlick");
-            tongueTimer = 0;
-        }
+        Debug.Log("frog touched");
+        isSmashed = true;
     }
 
-    IEnumerator RedFlick()
+    private void Crawl()
     {
-        yield return new WaitForSeconds(0.3f);
-        Damage.SetActive(true);
-        PlayerScript.hp -= 20;
+        transform.Translate(0, 0, 0.005f);
+    }
+    private void Fly()
+    {
+        Anim.SetBool("Fly", true);
+        transform.Translate(0, 0.03f, 0.01f);
+    }
+    private void Boost()
+    {
+        transform.Translate(0, 0, 0.01f);
+    }
+    private void Smashed()
+    {
+        isCrawling = false;
+        isFlying = false;
+        isBoosting = false;
+
+        Anim.SetBool("Smashed", true);
+        //Guts.SetActive(true);
+        transform.Translate(0, -0.05f, 0);
         
-        yield return new WaitForSeconds(0.1f);
-        Damage.SetActive(false);
     }
 
-   
+
+
 }
