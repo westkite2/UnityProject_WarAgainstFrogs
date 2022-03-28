@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class LandZoneScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void OnTriggerEnter(Collider other)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Debug.Log("frog entered land zone");
+        other.gameObject.GetComponent<FrogController>().isBoosting = false;
+        other.gameObject.GetComponent<FrogController>().isLanding = true;
     }
 }
