@@ -12,6 +12,7 @@ public class FrogController : MonoBehaviour
     public bool isCrawling = true;
     public bool isFlying = false;
     public bool isBoosting = false;
+    private bool isLanding = false;
     private bool isSmashed = false;
 
     // Start is called before the first frame update
