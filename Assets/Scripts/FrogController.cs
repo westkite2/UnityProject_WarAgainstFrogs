@@ -73,6 +73,7 @@ public class FrogController : MonoBehaviour
     {
         Debug.Log("frog touched");
         isSmashed = true;
+        PlayerScript.score += 10;
     }
 
     private void Crawl()
@@ -149,7 +150,7 @@ public class FrogController : MonoBehaviour
         this.gameObject.transform.position =
                 new Vector3(Random.Range(-0.8f, 0.8f),
                             Random.Range(0.05f, 0.05f),
-                            Random.Range(-3.0f, -1.5f));
+                            Random.Range(-1.7f, -1.3f));
 
     }
 }
