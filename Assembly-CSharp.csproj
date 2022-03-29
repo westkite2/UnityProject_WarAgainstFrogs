@@ -57,13 +57,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\ShipScript.cs" />
+    <Compile Include="Assets\Scripts\LandZoneScript.cs" />
     <Compile Include="Assets\Scripts\FrogCont.cs" />
     <Compile Include="Assets\Scripts\FlyZoneScript.cs" />
     <Compile Include="Assets\Scripts\BoostZoneScript.cs" />
     <Compile Include="Assets\Scripts\OldFrogController.cs" />
     <Compile Include="Assets\Scripts\PlayerScript.cs" />
     <Compile Include="Assets\Scripts\FrogController.cs" />
-    <Compile Include="Assets\Scripts\LandZoneScript.cs" />
+    <Compile Include="Assets\Scripts\FrogManager.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Prefabs\Polytope Studio\Lowpoly Medieval Environments\Sources\Shaders\PT_Water_Shader_WebGl.shader" />

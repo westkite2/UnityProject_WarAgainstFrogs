@@ -29,9 +29,11 @@ public class FrogController : MonoBehaviour
         PlayerScript = GameObject.Find("Player").GetComponent<PlayerScript>();
         Guts = this.transform.GetChild(5).gameObject;
         Guts.SetActive(false);
+
         attackTimer = 0.0f;
         waitingTime = 1;
 
+        Physics.IgnoreLayerCollision(3, 3);
     }
 
     // Update is called once per frame
@@ -75,11 +77,13 @@ public class FrogController : MonoBehaviour
 
     private void Crawl()
     {
+        Anim.SetBool("Crawl", true);
         transform.Translate(0, 0, 0.005f);
     }
     private void Fly()
     {
         Anim.SetBool("Fly", true);
+        Anim.SetBool("Crawl", false);
         transform.Translate(0, 0.02f, 0.008f);
     }
     private void Boost()
@@ -126,6 +130,26 @@ public class FrogController : MonoBehaviour
         Guts.SetActive(true);
         Rigid.constraints = RigidbodyConstraints.FreezeRotation;
         Rigid.useGravity = true;
+        StartCoroutine("DisableFrog");
     }
+    IEnumerator DisableFrog()
+    {
+        yield return new WaitForSeconds(1f);
+        this.gameObject.SetActive(false);
+        Guts.SetActive(false);
+        Rigid.constraints = RigidbodyConstraints.None;
+        Rigid.useGravity = false;
+        Anim.SetBool("Fly", false);
+        Anim.SetBool("Boost", false);
+        Anim.SetBool("Land", false);
+        Anim.ResetTrigger("Attack");
+        Anim.SetBool("Smashed", false);
+        isSmashed = false;
+        isCrawling = true;
+        this.gameObject.transform.position =
+                new Vector3(Random.Range(-0.8f, 0.8f),
+                            Random.Range(0.05f, 0.05f),
+                            Random.Range(-3.0f, -1.5f));
 
+    }
 }
