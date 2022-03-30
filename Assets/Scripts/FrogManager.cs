@@ -7,6 +7,7 @@ public class FrogManager : MonoBehaviour
     public GameObject Frog;
     public GameObject[] FrogList;
     public GameObject Damage;
+    public GameManager GameManager;
     private int total = 5;
     private int idx = 0;
 
@@ -40,6 +41,14 @@ public class FrogManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (GameManager.GAMEOVER)
+        {
+            StopCoroutine("EnableFrog");
+            for (int i = 0; i < total; i++)
+            {
+                FrogList[i].SetActive(false);
+                Damage.SetActive(false);
+            }
+        }
     }
 }

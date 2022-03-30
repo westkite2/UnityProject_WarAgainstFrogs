@@ -7,7 +7,7 @@ public class FrogController : MonoBehaviour
     public GameObject Damage;
     private GameObject Guts;
     private Rigidbody Rigid;
-    private PlayerScript PlayerScript;
+    private GameManager GameManager;
     private Animator Anim;
 
     private float attackTimer;
@@ -26,7 +26,7 @@ public class FrogController : MonoBehaviour
     {
         Anim = this.GetComponent<Animator>();
         Rigid = gameObject.GetComponent<Rigidbody>();
-        PlayerScript = GameObject.Find("Player").GetComponent<PlayerScript>();
+        GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         Guts = this.transform.GetChild(5).gameObject;
         Guts.SetActive(false);
 
@@ -73,7 +73,7 @@ public class FrogController : MonoBehaviour
     {
         Debug.Log("frog touched");
         isSmashed = true;
-        PlayerScript.score += 10;
+        GameManager.score += 10;
     }
 
     private void Crawl()
@@ -115,7 +115,7 @@ public class FrogController : MonoBehaviour
     {
         yield return new WaitForSeconds(0.3f);
         Damage.SetActive(true);
-        PlayerScript.hp -= 20;
+        GameManager.hp -= 20;
         yield return new WaitForSeconds(0.1f);
         Damage.SetActive(false);
     }

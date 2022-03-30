@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OldFrogController : MonoBehaviour
 {
-    private PlayerScript PlayerScript;
+    private GameManager GameManager;
     private Rigidbody Rigid;
     private Animator Anim;   
 
@@ -33,7 +33,7 @@ public class OldFrogController : MonoBehaviour
 
     private void Awake()
     {
-        PlayerScript = GameObject.Find("Player").GetComponent<PlayerScript>();
+        GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         Rigid = gameObject.GetComponent<Rigidbody>();
 
     }
@@ -139,7 +139,7 @@ public class OldFrogController : MonoBehaviour
     {
         yield return new WaitForSeconds(0.3f);
         Damage.SetActive(true);
-        PlayerScript.hp -= 20;
+        GameManager.hp -= 20;
         
         yield return new WaitForSeconds(0.1f);
         Damage.SetActive(false);
