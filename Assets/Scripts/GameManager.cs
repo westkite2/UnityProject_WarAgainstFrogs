@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public GameObject HPbar;
     public GameObject GameOverUI;
+    public GameObject PauseUI;
     private Image HPfill;
     public int hp;
     public Text ScoreUI;
@@ -18,6 +19,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         GameOverUI.SetActive(false);
+        PauseUI.SetActive(false);
         HPfill = HPbar.transform.GetChild(1).GetComponent<Image>();
         hp = 100;
         score = 0;

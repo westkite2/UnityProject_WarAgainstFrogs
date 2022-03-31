@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\FrogManager.cs" />
+    <Compile Include="Assets\Scripts\ButtonManager.cs" />
     <Compile Include="Assets\Scripts\LandZoneScript.cs" />
     <Compile Include="Assets\Scripts\FrogCont.cs" />
     <Compile Include="Assets\Scripts\FlyZoneScript.cs" />
@@ -64,7 +65,6 @@
     <Compile Include="Assets\Scripts\OldFrogController.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\FrogController.cs" />
-    <Compile Include="Assets\Scripts\StartButton.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Prefabs\Polytope Studio\Lowpoly Medieval Environments\Sources\Shaders\PT_Water_Shader_WebGl.shader" />
