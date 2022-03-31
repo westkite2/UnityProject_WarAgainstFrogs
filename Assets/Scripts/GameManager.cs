@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public GameObject HPbar;
     public GameObject GameOverUI;
     public GameObject PauseUI;
+    public GameObject Damage;
     private Image HPfill;
     public int hp;
     public Text ScoreUI;
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour
         GameOverUI.SetActive(false);
         PauseUI.SetActive(false);
         HPfill = HPbar.transform.GetChild(1).GetComponent<Image>();
+        Damage = GameObject.Find("Canvas").transform.GetChild(0).gameObject;
         hp = 100;
         score = 0;
     }

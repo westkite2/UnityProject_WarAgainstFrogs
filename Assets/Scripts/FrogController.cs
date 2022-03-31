@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class FrogController : MonoBehaviour
 {
-    public GameObject Damage;
     private GameObject Guts;
     private Rigidbody Rigid;
     private GameManager GameManager;
@@ -71,9 +70,11 @@ public class FrogController : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Debug.Log("frog touched");
-        isSmashed = true;
-        GameManager.score += 10;
+        if(isSmashed == false)
+        {
+            GameManager.score += 10;
+            isSmashed = true;
+        }
     }
 
     private void Crawl()
@@ -114,10 +115,10 @@ public class FrogController : MonoBehaviour
     IEnumerator RedFlick()
     {
         yield return new WaitForSeconds(0.3f);
-        Damage.SetActive(true);
+        GameManager.Damage.SetActive(true);
         GameManager.hp -= 20;
         yield return new WaitForSeconds(0.1f);
-        Damage.SetActive(false);
+        GameManager.Damage.SetActive(false);
     }
 
     private void Smashed()

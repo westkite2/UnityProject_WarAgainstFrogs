@@ -340,9 +340,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Frog: {fileID: 1644373995442134, guid: 0187bdd962557471faee34c9b592135c, type: 3}
-  FrogList: []
-  Damage: {fileID: 0}
   GameManager: {fileID: 378075964}
+  yellow: {fileID: 2100000, guid: a3b2303950a624313b019c4834557628, type: 2}
+  blue: {fileID: 2100000, guid: cca42b20867c44ba8981cb8c0958b1d1, type: 2}
+  red: {fileID: 2100000, guid: 8a4d341f618654371ad279350d04e49d, type: 2}
 --- !u!4 &51630937
 Transform:
   m_ObjectHideFlags: 0
@@ -1551,6 +1552,7 @@ MonoBehaviour:
   HPbar: {fileID: 1143815524}
   GameOverUI: {fileID: 17761277}
   PauseUI: {fileID: 347156108}
+  Damage: {fileID: 0}
   hp: 0
   ScoreUI: {fileID: 1100487741}
   score: 0

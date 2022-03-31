@@ -62,7 +62,6 @@
     <Compile Include="Assets\Scripts\FrogCont.cs" />
     <Compile Include="Assets\Scripts\FlyZoneScript.cs" />
     <Compile Include="Assets\Scripts\BoostZoneScript.cs" />
-    <Compile Include="Assets\Scripts\OldFrogController.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\FrogController.cs" />
   </ItemGroup>
