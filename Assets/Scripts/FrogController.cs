@@ -108,7 +108,6 @@ public class FrogController : MonoBehaviour
         attackTimer += Time.deltaTime;
         if (attackTimer > waitingTime)
         {
-            Debug.Log("attack!");
             Anim.SetTrigger("Attack");
             StartCoroutine("RedFlick");
             attackTimer = 0;

@@ -63,7 +63,7 @@ public class FrogManager : MonoBehaviour
             Frog1List[idx1++].SetActive(true);
             if (idx1 == num1) idx1 = 0;
         }
-        else if (GameManager.score > 600 & GameManager.score <= 900)
+        else if (GameManager.score > 600 & GameManager.score <= 1100)
         {
             yield return new WaitForSeconds(1f);
             Frog2List[idx2++].SetActive(true);
