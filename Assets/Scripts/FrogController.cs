@@ -11,6 +11,8 @@ public class FrogController : MonoBehaviour
 
     private float attackTimer;
     private int waitingTime;
+    public int power;
+    public float speed;
 
     //Flags
     public bool isCrawling = true;
@@ -91,7 +93,7 @@ public class FrogController : MonoBehaviour
     private void Boost()
     {
         Anim.SetBool("Boost", true);
-        transform.Translate(0, 0, 0.05f);
+        transform.Translate(0, 0, speed);
     }
     private void Land()
     {
@@ -116,7 +118,7 @@ public class FrogController : MonoBehaviour
     {
         yield return new WaitForSeconds(0.3f);
         GameManager.Damage.SetActive(true);
-        GameManager.hp -= 20;
+        GameManager.hp -= 20 * power;
         yield return new WaitForSeconds(0.1f);
         GameManager.Damage.SetActive(false);
     }

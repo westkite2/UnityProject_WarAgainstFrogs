@@ -16,9 +16,9 @@ public class FrogManager : MonoBehaviour
     private GameObject[] Frog3List;
     private GameObject[] Frog4List;
 
-    private int num1 = 20; //green
-    private int num2 = 20; //yellow
-    private int num3 = 20; //blue
+    private int num1 = 10; //green
+    private int num2 = 15; //yellow
+    private int num3 = 15; //blue
     private int num4 = 20; //red
 
     private int idx1 = 0;
@@ -29,10 +29,10 @@ public class FrogManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {        
-        MakeFrog(ref Frog1List, num1);
-        MakeFrog(ref Frog2List, num2, yellow);
-        MakeFrog(ref Frog3List, num3, blue);
-        MakeFrog(ref Frog4List, num4, red);
+        MakeFrog(ref Frog1List, num1, 0.05f, 1);
+        MakeFrog(ref Frog2List, num2, 0.1f, 1, yellow);
+        MakeFrog(ref Frog3List, num3, 0.08f, 2, blue, red);
+        MakeFrog(ref Frog4List, num4, 0.2f, 1, red);
         StartCoroutine("EnableFrog");
     }
     IEnumerator EnableFrog()
@@ -42,6 +42,17 @@ public class FrogManager : MonoBehaviour
             yield return new WaitForSeconds(1f);
             Frog1List[idx1++].SetActive(true);
             if (idx1 == num1) idx1 = 0;
+            yield return new WaitForSeconds(1f);
+            Frog2List[idx2++].SetActive(true);
+            if (idx2 == num2) idx2 = 0;
+            yield return new WaitForSeconds(1f);
+            Frog3List[idx3++].SetActive(true);
+            if (idx3 == num3) idx3 = 0;
+            yield return new WaitForSeconds(1f);
+            Frog4List[idx4++].SetActive(true);
+            if (idx4 == num4) idx4 = 0;
+
+            yield return new WaitForSeconds(1f);
         }
         else if (GameManager.score > 200 & GameManager.score <=400)
         {
@@ -124,19 +135,35 @@ public class FrogManager : MonoBehaviour
             {
                 Frog1List[i].SetActive(false);
             }
+            for (int i = 0; i < num2; i++)
+            {
+                Frog2List[i].SetActive(false);
+            }
+            for (int i = 0; i < num3; i++)
+            {
+                Frog3List[i].SetActive(false);
+            }
+            for (int i = 0; i < num4; i++)
+            {
+                Frog4List[i].SetActive(false);
+            }
+
         }
     }
-    private void MakeFrog(ref GameObject[] FrogList, int num, Material color = null)
+    private void MakeFrog(ref GameObject[] FrogList, int num, float speed, int power, Material color = null, Material tongue = null)
     {
         FrogList = new GameObject[num];
         for (int i = 0; i < num; i++)
         {
             GameObject frogObject = Instantiate(Frog);
             if (color) frogObject.transform.GetChild(0).GetComponent<SkinnedMeshRenderer>().material = color;
+            if (tongue) frogObject.transform.GetChild(3).GetComponent<SkinnedMeshRenderer>().material = tongue;
             frogObject.transform.position =
                 new Vector3(Random.Range(-0.8f, 0.8f),
                             Random.Range(0.05f, 0.05f),
                             Random.Range(-1.7f, -1.3f));
+            frogObject.GetComponent<FrogController>().speed = speed;
+            frogObject.GetComponent<FrogController>().power = power;
             FrogList[i] = frogObject;
             frogObject.SetActive(false);
         }

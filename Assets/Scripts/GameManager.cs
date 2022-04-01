@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     {
         HPfill.fillAmount = hp / 100f;
         ScoreUI.text = score.ToString();
-        if (hp == 0)
+        if (hp <= 0)
         {
             Debug.Log("Game Over!");
             GAMEOVER = true;
