@@ -10,9 +10,11 @@ public class GameManager : MonoBehaviour
     public GameObject GameOverUI;
     public GameObject PauseUI;
     public GameObject Damage;
+    public GameObject Chicken;
     private Image HPfill;
     public int hp;
     public Text ScoreUI;
+    public Text EndScoreUI;
     public int score;
     public bool GAMEOVER = false;
 
@@ -34,9 +36,13 @@ public class GameManager : MonoBehaviour
         ScoreUI.text = score.ToString();
         if (hp <= 0)
         {
-            Debug.Log("Game Over!");
             GAMEOVER = true;
+            EndScoreUI.text = score.ToString();
             GameOverUI.SetActive(true);
+        }
+        if (score >0 & score % 400 == 0)
+        {
+            Chicken.SetActive(true);
         }
 
     }

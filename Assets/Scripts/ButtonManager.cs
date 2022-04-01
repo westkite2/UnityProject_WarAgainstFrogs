@@ -18,7 +18,6 @@ public class ButtonManager : MonoBehaviour
     }
     public void OnClickExitButton()
     {
-        Debug.Log("Clicked Exit Button");
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else

@@ -19,7 +19,7 @@ public class FrogManager : MonoBehaviour
     private int num1 = 10; //green
     private int num2 = 15; //yellow
     private int num3 = 15; //blue
-    private int num4 = 20; //red
+    private int num4 = 25; //red
 
     private int idx1 = 0;
     private int idx2 = 0;
@@ -37,24 +37,13 @@ public class FrogManager : MonoBehaviour
     }
     IEnumerator EnableFrog()
     {
-        if (GameManager.score <= 200)
+        if (GameManager.score <= 180)
         {
             yield return new WaitForSeconds(1f);
             Frog1List[idx1++].SetActive(true);
             if (idx1 == num1) idx1 = 0;
-            yield return new WaitForSeconds(1f);
-            Frog2List[idx2++].SetActive(true);
-            if (idx2 == num2) idx2 = 0;
-            yield return new WaitForSeconds(1f);
-            Frog3List[idx3++].SetActive(true);
-            if (idx3 == num3) idx3 = 0;
-            yield return new WaitForSeconds(1f);
-            Frog4List[idx4++].SetActive(true);
-            if (idx4 == num4) idx4 = 0;
-
-            yield return new WaitForSeconds(1f);
         }
-        else if (GameManager.score > 200 & GameManager.score <=400)
+        else if (GameManager.score > 180 & GameManager.score <=300)
         {
             yield return new WaitForSeconds(1f);
             Frog1List[idx1++].SetActive(true);
@@ -63,7 +52,7 @@ public class FrogManager : MonoBehaviour
             Frog2List[idx2++].SetActive(true);
             if (idx2 == num2) idx2 = 0;
         }
-        else if (GameManager.score > 400 & GameManager.score <=600)
+        else if (GameManager.score > 300 & GameManager.score <=600)
         {
             yield return new WaitForSeconds(1f);
             Frog2List[idx2++].SetActive(true);
@@ -74,7 +63,7 @@ public class FrogManager : MonoBehaviour
             Frog1List[idx1++].SetActive(true);
             if (idx1 == num1) idx1 = 0;
         }
-        else if (GameManager.score > 600 & GameManager.score <= 800)
+        else if (GameManager.score > 600 & GameManager.score <= 900)
         {
             yield return new WaitForSeconds(1f);
             Frog2List[idx2++].SetActive(true);
@@ -90,7 +79,7 @@ public class FrogManager : MonoBehaviour
             Frog2List[idx2++].SetActive(true);
             if (idx2 == num2) idx2 = 0;
         }
-        else if (GameManager.score > 800 & GameManager.score <= 1000)
+        else if (GameManager.score > 900 & GameManager.score <= 1200)
         {
             yield return new WaitForSeconds(1f);
             Frog2List[idx2++].SetActive(true);
@@ -98,7 +87,7 @@ public class FrogManager : MonoBehaviour
             Frog3List[idx3++].SetActive(true);
             if (idx3 == num3) idx3 = 0;
         }
-        else if (GameManager.score > 1000 & GameManager.score <= 1200)
+        else if (GameManager.score > 1200 & GameManager.score <= 1500)
         {
             yield return new WaitForSeconds(1f);
             Frog3List[idx3++].SetActive(true);
@@ -115,9 +104,11 @@ public class FrogManager : MonoBehaviour
             if (idx3 == num3) idx3 = 0;
 
         }
-        else if (GameManager.score > 1200)
+        else if (GameManager.score > 1500)
         {
             yield return new WaitForSeconds(0.5f);
+            Frog4List[idx4++].SetActive(true);
+            if (idx4 == num4) idx4 = 0;
             Frog4List[idx4++].SetActive(true);
             if (idx4 == num4) idx4 = 0;
         }
