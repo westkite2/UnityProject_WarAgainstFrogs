@@ -33,5 +33,7 @@ public class ChickenController : MonoBehaviour
         GameManager.hp = 100;
         Anim.SetBool("Run", true);
         isRunning = true;
+        GameManager.PlaySound("ITEM");
+        GameManager.PlaySound("CHICKRUN");
     }
 }

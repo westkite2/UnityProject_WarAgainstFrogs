@@ -37,13 +37,13 @@ public class FrogManager : MonoBehaviour
     }
     IEnumerator EnableFrog()
     {
-        if (GameManager.score <= 180)
+        if (GameManager.score <= 150)
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(1f);            
             Frog1List[idx1++].SetActive(true);
             if (idx1 == num1) idx1 = 0;
         }
-        else if (GameManager.score > 180 & GameManager.score <=300)
+        else if (GameManager.score > 150 & GameManager.score <=300)
         {
             yield return new WaitForSeconds(1f);
             Frog1List[idx1++].SetActive(true);
@@ -63,7 +63,7 @@ public class FrogManager : MonoBehaviour
             Frog1List[idx1++].SetActive(true);
             if (idx1 == num1) idx1 = 0;
         }
-        else if (GameManager.score > 600 & GameManager.score <= 1100)
+        else if (GameManager.score > 600 & GameManager.score <= 900)
         {
             yield return new WaitForSeconds(1f);
             Frog2List[idx2++].SetActive(true);

@@ -74,6 +74,7 @@ public class FrogController : MonoBehaviour
     {
         if(isSmashed == false)
         {
+            GameManager.PlaySound("HIT");
             GameManager.score += 10;
             isSmashed = true;
         }
@@ -118,6 +119,7 @@ public class FrogController : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         GameManager.Damage.SetActive(true);
         GameManager.hp -= 20 * power;
+        GameManager.PlaySound("ATTACK");
         yield return new WaitForSeconds(0.1f);
         GameManager.Damage.SetActive(false);
     }
