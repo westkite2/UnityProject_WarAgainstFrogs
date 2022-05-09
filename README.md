@@ -1,2 +1,6 @@
-# UnityProject_WarAgainstFrogs
-Unity 게임 프로젝트 -  War Against Frogs. C#
+# 모바일 게임 <War Against Frogs>
+## 프로젝트 개요
+* 2022년 봄에 '개구리를 터뜨리는 게임을 해보고 싶다'는 친구를 위해 제작하였다.
+* 약 한달 간 혼자 개발하였고, 그래픽은 Unity 무료 Asset을 사용하였다.
+* 화면으로 날아오는 개구리들을 터치하여 터뜨리는 모바일 싱글플레이 3D 게임이다.
+* Unity, C#을 이용하였다.
